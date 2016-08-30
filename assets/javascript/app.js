@@ -59,8 +59,7 @@ var triviaQuestions = [{
 	answerList: ["Yes! So weird!", "They don't have accents?", "Nope!", "What's a Ratatouille?"],
 	answer: 0
 }];
-
-// var gifArray = ['question1', 'question2', 'question3', 'question4', 'question5', 'question6', 'question7', 'question8', 'question9', 'question10', 'question11', 'question12', 'question13','question14','question15'];
+var search = ['sully+monsters+inc', 'bugs+life', 'toy+story+andy', 'brave+bear', 'wall-e+plant', 'inside+out+emotions', 'the+incredibles+nemesis', 'finding+nemo', 'lightning+mcqueen', 'up+russell', 'the+good+dinosaur', 'monsters+university', 'toy+story+woody','bing+bong','ratatouille'];
 var currentQuestion; var correctAnswer; var incorrectAnswer; var unanswered; var seconds; var time; var answered; var userSelect;
 var messages = {
 	correct: "Yes, that's right!",
@@ -94,7 +93,7 @@ function newGame(){
 function newQuestion(){
 	$('#message').empty();
 	$('#correctedAnswer').empty();
-	// $('#gif').empty();
+	$('#gif').empty();
 	answered = true;
 	
 	//sets up new questions & answerList
@@ -141,7 +140,18 @@ function answerPage(){
 
 	var rightAnswerText = triviaQuestions[currentQuestion].answerList[triviaQuestions[currentQuestion].answer];
 	var rightAnswerIndex = triviaQuestions[currentQuestion].answer;
-	// $('#gif').html('<img src = "assets/images/'+ gifArray[currentQuestion] +'.gif" width = "400px">');
+	//giphy api
+	var giphyURL = "http://api.giphy.com/v1/gifs/search?q=pixar+" + search[currentQuestion] + "&limit=1&rating=g&api_key=dc6zaTOxFJmzC"
+	$.ajax({url: giphyURL, method: 'GET'}).done(function(giphy){
+		var currentGif = giphy.data;
+		$.each(currentGif, function(index,value){
+		var embedGif = value.images.original.url;
+		newGif = $('<img>');
+		newGif.attr('src', embedGif);
+		newGif.addClass('gifImg');
+		$('#gif').html(newGif);
+		});
+	});
 	//checks to see correct, incorrect, or unanswered
 	if((userSelect == rightAnswerIndex) && (answered == true)){
 		correctAnswer++;
@@ -169,7 +179,7 @@ function scoreboard(){
 	$('#timeLeft').empty();
 	$('#message').empty();
 	$('#correctedAnswer').empty();
-	// $('#gif').empty();
+	$('#gif').empty();
 
 	$('#finalMessage').html(messages.finished);
 	$('#correctAnswers').html("Correct Answers: " + correctAnswer);

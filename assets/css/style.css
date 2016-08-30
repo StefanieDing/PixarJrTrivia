@@ -37,8 +37,10 @@ h2, #message, #finalMessage{
 	padding: 10px;
 }
 
-#gif{
+.gifImg{
 	margin: 30px;
+	max-width: 400px;
+	align: center;
 }
 
 @media screen and (max-width:640px){
