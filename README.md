@@ -7,3 +7,8 @@ A Pixar (Jr.) Trivia
 Play here: http://stark-reaches-99525.herokuapp.com
 
 The goal of this version is to create an easier Pixar trivia game (Junior) and to implement the Giphy API instead of embedding my own saved gifs.
+
+
+Want to challenge yourself with the regular version? 
+
+Play here: http://gentle-garden-66884.herokuapp.com/
