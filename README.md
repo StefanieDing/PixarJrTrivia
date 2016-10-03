@@ -9,8 +9,6 @@ After creating my initial Pixar Trivia game (https://pixartrivia.herokuapp.com/)
 ## Getting Started 
 Play here: https://pixartriviajr.herokuapp.com/
 
-## Screenshots
-
 ## Technologies used
 - Google Fonts
 - Bootstrap
